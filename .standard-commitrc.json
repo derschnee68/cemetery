@@ -1,0 +1,20 @@
+{
+  "types": [
+    "feat",
+    "fix",
+    "chore",
+    "ci",
+    "docs",
+    "refactor",
+    "test"
+  ],
+  "promptScope": "enforce",
+  "scopes": [
+    "graphql",
+    "front",
+    "cli-dev",
+    "libs",
+    "docs",
+    "repo"
+  ]
+}
