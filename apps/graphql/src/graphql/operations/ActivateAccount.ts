@@ -21,7 +21,8 @@ export default class ActivateAccount {
     private readonly em: EntityManager,
     private readonly mailer: MailerService,
     private readonly jwt: JwtService,
-  ) {}
+  ) {
+  }
 
   @Public()
   @Mutation(() => ActivateAccountResult, {
@@ -30,7 +31,7 @@ export default class ActivateAccount {
   })
   async activateAccount(
     @Args('token', { description: 'The confirmation token received by email' })
-    token: string,
+      token: string,
   ): Promise<typeof ActivateAccountResult> {
     let email: string;
 

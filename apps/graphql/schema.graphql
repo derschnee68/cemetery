@@ -28,6 +28,105 @@ A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date
 """
 scalar DateTime
 
+"""A cemetery managed by the city"""
+type Cemetery {
+  """The cemetery ID"""
+  id: ID!
+
+  """The cemetery name"""
+  name: String!
+
+  """The cemetery address"""
+  address: String!
+
+  """The cemetery is archived"""
+  archived: Boolean!
+
+  """Graves belonging to given cemetery"""
+  graves: [Grave!]!
+}
+
+"""A cemetery concession plot"""
+type Plot {
+  """The cemetery ID"""
+  id: ID!
+
+  """The day the concession plot starts"""
+  start: DateTime
+
+  """The day the concession plot ends"""
+  end: DateTime
+
+  """The price paid for the plot in cents"""
+  price: Float
+
+  """The plot is archived"""
+  archived: Boolean!
+
+  """The date the plot has been created"""
+  createdAt: DateTime!
+
+  """The last date the plot has been updated"""
+  updatedAt: DateTime!
+
+  """Grave belonging to given plot"""
+  grave: Grave!
+
+  """Deceased person belonging to given plot"""
+  deceased: Deceased!
+}
+
+"""A grave on a cemetery"""
+type Grave {
+  """The grave ID"""
+  id: ID!
+
+  """The grave is archived"""
+  archived: Boolean!
+
+  """The date the grave has been created"""
+  createdAt: DateTime!
+
+  """The last date the grave has been updated"""
+  updatedAt: DateTime!
+
+  """Deceased persons currently in the grave"""
+  deceaseds: [Deceased!]!
+
+  """Plots associated to the given grave"""
+  plots: [Plot!]!
+
+  """Cemetery containing the given grave"""
+  cemetery: Cemetery!
+}
+
+"""A deceased person"""
+type Deceased {
+  """The deceased person ID"""
+  id: ID!
+
+  """The deceased person first name"""
+  firstName: String!
+
+  """The deceased person last name"""
+  lastName: String!
+
+  """The deceased person is archived"""
+  archived: Boolean!
+
+  """The date the deceased person has been created"""
+  createdAt: DateTime!
+
+  """The last date the deceased person has been updated"""
+  updatedAt: DateTime!
+
+  """Plots belonging to given deceased person"""
+  plots: [Plot!]!
+
+  """Grave belonging to given deceased person"""
+  grave: Grave
+}
+
 """
 JWT registered claims as described in the [RFC7519](https://datatracker.ietf.org/doc/html/rfc7519#section-4.1).
 """
@@ -57,9 +156,84 @@ type JwtPayload {
 type Query {
   """Return a user entity related to the logged in user."""
   me: User!
+
+  """List all cemeteries"""
+  cemeteryList: [Cemetery!]!
+
+  """List all deceased persons"""
+  deceasedList: [Deceased!]!
+
+  """List all concession plots"""
+  plotList: [Plot!]!
 }
 
 type Mutation {
+  """Create a new cemetery"""
+  cemeteryCreate(
+    """The name of the cemetery"""
+    name: String!
+
+    """The address of the cemetery"""
+    address: String!
+  ): Cemetery!
+
+  """Archive a cemetery"""
+  cemeteryArchive(
+    """The cemetery ID"""
+    id: ID!
+  ): Boolean!
+
+  """Create a new grave"""
+  graveCreate(
+    """The cemetery id in which the grave belongs to"""
+    cemeteryId: ID!
+  ): Grave!
+
+  """Archive a grave"""
+  graveArchive(
+    """The grave ID"""
+    id: ID!
+  ): Boolean!
+
+  """Create a new concession plot"""
+  plotCreate(
+    """The grave id in which the plot belongs to"""
+    graveId: ID!
+
+    """The deceased person id attached to the plot"""
+    deceasedId: ID!
+
+    """The day the concession plot starts"""
+    start: DateTime = null
+
+    """The day the concession plot ends"""
+    end: DateTime = null
+
+    """The price paid for the plot in cents"""
+    price: Float = null
+  ): Plot!
+
+  """Archive a plot"""
+  plotArchive(
+    """The plot ID"""
+    id: ID!
+  ): Boolean!
+
+  """Create a new deceased person"""
+  deceasedCreate(
+    """The first name of the deceased person"""
+    firstName: String!
+
+    """The last name of the deceased person"""
+    lastName: String!
+  ): Deceased!
+
+  """Archive a deceased person"""
+  deceasedArchive(
+    """The deceased person ID"""
+    id: ID!
+  ): Boolean!
+
   """Login in to the application with email/password credentials."""
   login(
     """The email to log in with"""

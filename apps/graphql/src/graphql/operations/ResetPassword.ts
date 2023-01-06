@@ -1,12 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import {
-  Args,
-  ArgsType,
-  createUnionType,
-  Field,
-  Mutation,
-  Resolver,
-} from '@nestjs/graphql';
+import { Args, ArgsType, createUnionType, Field, Mutation, Resolver } from '@nestjs/graphql';
 import { EntityManager } from '@mikro-orm/core';
 import User from '../../database/entities/User';
 import Public from '../../auth/Public';
@@ -40,7 +33,8 @@ export default class ResetPassword {
   constructor(
     private readonly jwt: JwtService,
     private readonly em: EntityManager,
-  ) {}
+  ) {
+  }
 
   @Public()
   @Mutation(() => ResetPasswordResult, {
