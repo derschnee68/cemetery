@@ -89,6 +89,7 @@ importers:
       '@mui/icons-material': ^5.11.0
       '@mui/lab': 5.0.0-alpha.114
       '@mui/material': ^5.11.1
+      '@mui/x-data-grid': ^5.17.18
       '@mui/x-date-pickers': 5.0.12
       '@rehooks/local-storage': ^2.4.4
       '@sentry/nextjs': ^7.28.1
@@ -126,6 +127,7 @@ importers:
       '@mui/icons-material': 5.11.0_iq6n432hogcf75rdfmlkzd4zne
       '@mui/lab': 5.0.0-alpha.114_g2qhqczl4llrdlyw6kdsue26vu
       '@mui/material': 5.11.2_lskpmcsdi7ipu6qpuapyu56ihm
+      '@mui/x-data-grid': 5.17.18_4vavdnx26xk4g2nt6x4kfuu3vu
       '@mui/x-date-pickers': 5.0.12_6p5nzfwolepc3baulefpb5u3uu
       '@rehooks/local-storage': 2.4.4_react@18.2.0
       '@sentry/nextjs': 7.28.1_2cq33iptvuz7xxvba6r2epidty
@@ -4902,6 +4904,28 @@ packages:
       prop-types: 15.8.1
       react: 18.2.0
       react-is: 18.2.0
+    dev: false
+
+  /@mui/x-data-grid/5.17.18_4vavdnx26xk4g2nt6x4kfuu3vu:
+    resolution: {integrity: sha512-0hWExrABXA03HQZoY/EaN6jiFMXdQWs7Y+3xtngiRzGQQl6kmLz1IjdKpNuwuc2g3xphnCpz9WSqTxVhJqdmAw==}
+    engines: {node: '>=12.0.0'}
+    peerDependencies:
+      '@mui/material': ^5.4.1
+      '@mui/system': ^5.4.1
+      react: ^17.0.2 || ^18.0.0
+      react-dom: ^17.0.2 || ^18.0.0
+    peerDependenciesMeta:
+      '@mui/system':
+        optional: true
+    dependencies:
+      '@babel/runtime': 7.20.7
+      '@mui/material': 5.11.2_lskpmcsdi7ipu6qpuapyu56ihm
+      '@mui/utils': 5.11.2_react@18.2.0
+      clsx: 1.2.1
+      prop-types: 15.8.1
+      react: 18.2.0
+      react-dom: 18.2.0_react@18.2.0
+      reselect: 4.1.7
     dev: false
 
   /@mui/x-date-pickers/5.0.12_6p5nzfwolepc3baulefpb5u3uu:
@@ -15950,6 +15974,10 @@ packages:
 
   /requires-port/1.0.0:
     resolution: {integrity: sha512-KigOCHcocU3XODJxsu8i/j8T9tzT4adHiecwORRQ0ZZFcp7ahwXuRU1m+yuO90C5ZUyGeGfocHDI14M3L3yDAQ==}
+    dev: false
+
+  /reselect/4.1.7:
+    resolution: {integrity: sha512-Zu1xbUt3/OPwsXL46hvOOoQrap2azE7ZQbokq61BQfiXvhewsKDwhMeZjTX9sX0nvw1t/U5Audyn1I9P/m9z0A==}
     dev: false
 
   /resolve-cwd/3.0.0:

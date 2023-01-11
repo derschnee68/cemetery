@@ -7,11 +7,18 @@ export type ActivateAccountMutationVariables = Types.Exact<{
   token: Types.Scalars['String'];
 }>;
 
-export type ActivateAccountMutation = { __typename?: 'Mutation'; activateAccount: boolean };
+export type ActivateAccountMutation = {
+  __typename?: 'Mutation';
+  activateAccount: { __typename?: 'InvalidTokenProblem' } | { __typename?: 'Success'; success: boolean };
+};
 
 export const ActivateAccountDocument = gql`
   mutation ActivateAccount($token: String!) {
-    activateAccount(token: $token)
+    activateAccount(token: $token) {
+      ... on Success {
+        success
+      }
+    }
   }
 `;
 export type ActivateAccountMutationFn = Apollo.MutationFunction<

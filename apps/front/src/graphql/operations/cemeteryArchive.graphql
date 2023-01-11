@@ -1,0 +1,3 @@
+mutation CemeteryArchive($cemeteryId: ID!) {
+    cemeteryArchive(id: $cemeteryId)
+}
