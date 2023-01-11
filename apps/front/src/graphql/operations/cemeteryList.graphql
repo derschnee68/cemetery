@@ -1,0 +1,7 @@
+query CemeteryList {
+    cemeteryList {
+        id
+        name
+        address
+    }
+}
