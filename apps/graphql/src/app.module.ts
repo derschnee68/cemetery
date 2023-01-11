@@ -16,6 +16,21 @@ import { MailerModule } from '@nestjs-modules/mailer';
 import Me from './graphql/operations/Me';
 import SendActivationMail from './graphql/operations/SendActivationMail';
 import ActivateAccount from './graphql/operations/ActivateAccount';
+import GraveCreate from './graphql/operations/GraveCreate';
+import CemeteryList from './graphql/operations/CemeteryList';
+import CemeteryCreate from './graphql/operations/CemeteryCreate';
+import CemeteryResolver from './database/resolvers/CemeteryResolver';
+import GraveResolver from './database/resolvers/GraveResolver';
+import PlotResolver from './database/resolvers/PlotResolver';
+import DeceasedResolver from './database/resolvers/DeceasedResolver';
+import CemeteryArchive from './graphql/operations/CemeteryArchive';
+import GraveArchive from './graphql/operations/GraveArchive';
+import PlotCreate from './graphql/operations/PlotCreate';
+import PlotArchive from './graphql/operations/PlotArchive';
+import DeceasedCreate from './graphql/operations/DeceasedCreate';
+import DeceasedArchive from './graphql/operations/DeceasedArchive';
+import DeceasedList from './graphql/operations/DeceasedList';
+import PlotList from './graphql/operations/PlotList';
 
 @Module({
   imports: [
@@ -32,13 +47,36 @@ import ActivateAccount from './graphql/operations/ActivateAccount';
   ],
   controllers: [],
   providers: [
+    // Queries
     Me,
+    CemeteryList,
+    DeceasedList,
+    PlotList,
+    // Mutations
+    CemeteryCreate,
+    CemeteryArchive,
+
+    GraveCreate,
+    GraveArchive,
+
+    PlotCreate,
+    PlotArchive,
+
+    DeceasedCreate,
+    DeceasedArchive,
+    // Auth
     Login,
     SignUp,
     ForgotPassword,
     ResetPassword,
     SendActivationMail,
     ActivateAccount,
+
+    // Resolvers
+    CemeteryResolver,
+    GraveResolver,
+    PlotResolver,
+    DeceasedResolver,
   ],
 })
 export class AppModule {}

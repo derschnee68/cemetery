@@ -1,14 +1,6 @@
 import { EntityManager } from '@mikro-orm/core';
 import { MailerService } from '@nestjs-modules/mailer';
-import {
-  Args,
-  ArgsType,
-  createUnionType,
-  Field,
-  Mutation,
-  ObjectType,
-  Resolver,
-} from '@nestjs/graphql';
+import { Args, ArgsType, createUnionType, Field, Mutation, ObjectType, Resolver } from '@nestjs/graphql';
 import { JwtService } from '@nestjs/jwt';
 import Public from '../../auth/Public';
 import User from '../../database/entities/User';
@@ -47,7 +39,8 @@ export default class SignUp {
     private readonly em: EntityManager,
     private readonly jwt: JwtService,
     private readonly mailer: MailerService,
-  ) {}
+  ) {
+  }
 
   @Public()
   @Mutation(() => SignUpResult, {

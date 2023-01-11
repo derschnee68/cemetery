@@ -5,6 +5,10 @@ import schema from '../config/schema';
 import NotFound from '../errors/NotFound';
 import MikroORMLogger from '../logging/MikroORMLogger';
 import User from './entities/User';
+import Deceased from './entities/Deceased';
+import Cemetery from './entities/Cemetery';
+import Grave from './entities/Grave';
+import Plot from './entities/Plot';
 
 loadEnv();
 const env = schema.pick({ MYSQL_URI: true }).parse(process.env);
@@ -13,7 +17,7 @@ const config: Options = {
   debug: true,
   type: 'mysql',
   clientUrl: env.MYSQL_URI,
-  entities: [User],
+  entities: [User, Cemetery, Deceased, Grave, Plot],
   migrations: {
     pathTs: './src/database/migrations',
     path: './dist/database/migrations',

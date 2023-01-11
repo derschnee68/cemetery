@@ -1,13 +1,5 @@
 import { EntityManager } from '@mikro-orm/core';
-import {
-  Args,
-  ArgsType,
-  createUnionType,
-  Field,
-  Mutation,
-  ObjectType,
-  Resolver,
-} from '@nestjs/graphql';
+import { Args, ArgsType, createUnionType, Field, Mutation, ObjectType, Resolver } from '@nestjs/graphql';
 import { JwtService } from '@nestjs/jwt';
 import Public from '../../auth/Public';
 import { compare } from '../../crypto/utils/ssha';
@@ -73,7 +65,8 @@ export default class Login {
   constructor(
     private readonly em: EntityManager,
     private readonly jwt: JwtService,
-  ) {}
+  ) {
+  }
 
   @Public()
   @Mutation(() => LoginResult, {

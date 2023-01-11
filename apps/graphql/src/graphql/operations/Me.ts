@@ -7,7 +7,8 @@ import UserId from '../decorators/UserId';
 @Resolver()
 @Injectable()
 export default class Me {
-  constructor(private readonly em: EntityManager) {}
+  constructor(private readonly em: EntityManager) {
+  }
 
   @Query(() => User, {
     description: 'Return a user entity related to the logged in user.',

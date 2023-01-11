@@ -29,7 +29,7 @@ export default class ForgotPassword {
   })
   async forgotPassword(
     @Args('email', { description: 'The email whose password is to be reset' })
-    email: string,
+      email: string,
   ): Promise<boolean> {
     const user = await this.users.findOne({ email });
 

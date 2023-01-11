@@ -18,7 +18,8 @@ export default class SendActivationMail {
     private readonly em: EntityManager,
     private readonly jwt: JwtService,
     private readonly mailer: MailerService,
-  ) {}
+  ) {
+  }
 
   @Public()
   @Mutation(() => Boolean, {

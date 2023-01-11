@@ -1,0 +1,5 @@
+mutation CemeteryCreate($name: String!, $address: String!) {
+    cemeteryCreate(name: $name, address: $address) {
+        id
+    }
+}
