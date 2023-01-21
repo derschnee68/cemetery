@@ -1,0 +1,7 @@
+query DeceasedList {
+    deceasedList {
+        id
+        firstName
+        lastName
+    }
+}
