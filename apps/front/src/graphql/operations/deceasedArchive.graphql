@@ -1,0 +1,3 @@
+mutation DeceasedArchive($deceasedId: ID!) {
+    deceasedArchive(id: $deceasedId)
+}

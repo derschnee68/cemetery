@@ -1,0 +1,5 @@
+mutation DeceasedCreate($firstName: String!, $lastName: String!) {
+    deceasedCreate(firstName: $firstName, lastName: $lastName) {
+        id
+    }
+}
